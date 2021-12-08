@@ -1,33 +1,33 @@
 <template>
-  <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">หน้าหลัก</b-navbar-brand>
-
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-      
-
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
-          <b-nav-form>
-           
-            
-            <b-button size="sm" class="my-2 my-sm-0" type="submit"
-              >หมวดหมู่</b-button
-            >
-            <b-button size="sm" class="my-2 my-sm-0" type="submit"
-              >todo</b-button
-            >
-          </b-nav-form>
-
-         
-          </b-nav-item-dropdown>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
+  <div class="center_box">
+    <div>
+      <b-button href="#" variant="primary" @click="todo">todo</b-button>
+    </div>
+    <div class="col-md-1"></div>
+    <b-button href="#" variant="primary" @click="createcategory"
+      >category</b-button
+    >
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  layout: "user",
+  methods: {
+    todo() {
+      this.$router.push("/todo");
+    },
+    createcategory() {
+      this.$router.push("todo/create");
+    },
+  },
+};
 </script>
+<style scoped>
+.center_box {
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  display: flex;
+}
+</style>
