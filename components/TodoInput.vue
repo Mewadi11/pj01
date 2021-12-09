@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input :value="value" @input="createtodo" />
+    <input :value="value" type="text" placeholder="name" @input="createtodo" />
 
     <button @click="Todo">สร้างtodo</button>
   </div>

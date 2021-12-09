@@ -1,10 +1,9 @@
 <template>
   <div class="center_box">
-    <div>
-      <b-button href="#" variant="primary" @click="todo">todo</b-button>
-    </div>
     <div class="col-md-1"></div>
-    <b-button href="#" variant="primary" @click="category">category</b-button>
+    <b-button href="#" variant="primary" @click="createcategory"
+      >สร้างหมวดหมู่</b-button
+    >
   </div>
 </template>
 
@@ -12,11 +11,11 @@
 export default {
   layout: "user",
   methods: {
-    todo() {
-      this.$router.push("/todo");
+    category() {
+      this.$router.push("/category");
     },
     createcategory() {
-      this.$router.push("todo/create");
+      this.$router.push("category/create");
     },
   },
 };

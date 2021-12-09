@@ -1,31 +1,23 @@
 <template>
   <div class="center_from">
-    <div role="group">
-      <label for="input-live">Name:</label>
-      <b-form-input
-        id="input-live"
-        v-model="name"
-        :state="nameState"
-        aria-describedby="input-live-help input-live-feedback"
-        placeholder="Enter your name"
-        trim
-      ></b-form-input>
+    <div class="box">
+      <div class="form-group kan" role="group">
+        <div class="m-5">
+          <label for="input-live">Name:</label>
+          <input type="text" class="form-control" v-model="name" />
 
-      <!-- This will only be shown if the preceding input has an invalid state -->
-      <b-form-invalid-feedback id="input-live-feedback">
-        Enter at least 3 letters
-      </b-form-invalid-feedback>
-
-      <!-- This is a form text block (formerly known as help block) -->
-      <b-form-text id="input-live-help">Your full name.</b-form-text>
-    </div>
-
-    <div class="center_box">
-      <div>
-        <b-button href="#" variant="primary" @click="back">กลับ</b-button>
+          <label for="input-live">Lastname:</label>
+          <input type="text" class="form-control" v-model="lastname" />
+        </div>
       </div>
-      <div class="col-md-10"></div>
-      <b-button href="#" variant="primary" @click="save">ยืนยัน</b-button>
+
+      <div class="center_box mt-5">
+        <div>
+          <b-button href="#" variant="primary" @click="back">กลับ</b-button>
+        </div>
+        <div class="col-md-10"></div>
+        <b-button href="#" variant="primary" @click="save">ยืนยัน</b-button>
+      </div>
     </div>
   </div>
 </template>
@@ -33,9 +25,15 @@
 <script>
 export default {
   layout: "user",
+  data() {
+    return {
+      name: "",
+      lastname: "",
+    };
+  },
   methods: {
     save() {
-      this.$router.push("todo/");
+      this.$router.push("/todo");
     },
   },
 };
@@ -52,7 +50,7 @@ export default {
 }
 
 .center_box {
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-end;
   flex-grow: 1;
   display: flex;
@@ -61,5 +59,15 @@ export default {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+}
+.kan {
+  min-height: 300px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+.box {
+  margin: auto;
+  width: 80%;
+  margin-top: 100px;
 }
 </style>
