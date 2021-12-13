@@ -17,6 +17,7 @@ export default {
     createcategory() {
       this.$router.push("category/create");
     },
+    
   },
 };
 </script>

@@ -41,6 +41,9 @@ export default {
     todo() {
       this.$router.push("todo/");
     },
+    category(){
+      this.$router.push("/category");
+  },
   },
 };
 </script>

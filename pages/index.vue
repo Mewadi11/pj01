@@ -15,8 +15,8 @@ export default {
     todo() {
       this.$router.push("/todo");
     },
-    createcategory() {
-      this.$router.push("todo/create");
+    category() {
+      this.$router.push("/category");
     },
   },
 };
