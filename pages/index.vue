@@ -1,10 +1,17 @@
 <template>
   <div class="center_box">
-    <div>
-      <b-button href="#" variant="primary" @click="todo">todo</b-button>
+    <div class="btntc">
+      <div class="bbutton">
+        <b-button href="#" variant="outline-primary " @click="todo"
+          >todo</b-button
+        >
+      </div>
+      <div class="bbutton">
+        <button href="#" variant="outline-primary" @click="category">
+          category
+        </button>
+      </div>
     </div>
-    <div class="col-md-1"></div>
-    <b-button href="#" variant="primary" @click="category">category</b-button>
   </div>
 </template>
 
@@ -27,5 +34,24 @@ export default {
   align-items: center;
   flex-grow: 1;
   display: flex;
+}
+:root {
+  --white: #faf0e6;
+  --beige: #f0e9d2;
+  --kakee: #e6ddc4;
+  --kam: #678983;
+  --krom: #181d31;
+}
+.btntc {
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  display: grid;
+  gap: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.bbutton {
+  background-color: var(--kakee);
 }
 </style>

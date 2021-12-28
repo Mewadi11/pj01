@@ -1,16 +1,41 @@
 <template>
   <div class="index_container">
-    <div v-bind:class="hamburgerclass" href="#"></div>
     <div class="headbar">
       <label for=" "> หน้าแรก </label>
       <div @click="Isopen = true">
         <i class="fas fa-bars"></i>
+
+        <!-- <button
+          calss="bar"
+          v-on:click="hamburgerclass = !hamburgerclass"
+          v-bind:class="hamburgerclass"
+          type="buttonType"
+        ></button> -->
       </div>
     </div>
-    <div class="bt"><Nuxt /></div>
+    <div :class="hamburgerclass">
+      <div class="closebtn" @click="Isopen = false">
+        <i class="fas fa-times"></i>
+      </div>
+      <li class="menu--bar"><a href="#">HOME</a></li>
+      <li class="menu--bar"><a href="#">TODO</a></li>
+      <li class="menu--bar"><a href="#">CATEGORY</a></li>
+      <li class="menu--bar"><a href="#">LOGOUT</a></li>
+    </div>
+
+    <div class="bt" href="#">
+      <Nuxt />
+    </div>
 
     <footer class="footer">
-      <div class="fooker">© footer</div>
+      <div class="fooker">
+        © footer
+
+        <li class="menu--bar"><a href="#">HOME</a></li>
+        <li class="menu--bar"><a href="#">TODO</a></li>
+        <li class="menu--bar"><a href="#">CATEGORY</a></li>
+        <li class="menu--bar"><a href="#">thisisthemay@gmail.com</a></li>
+      </div>
     </footer>
   </div>
 </template>
@@ -25,12 +50,13 @@ export default {
   computed: {
     hamburgerclass() {
       if (this.Isopen) {
-        return "hamburger hamburger--open";
+        return "menu menu--open";
       } else {
-        return "hamburger";
+        return "menu";
       }
     },
   },
+
   methods: {
     home() {
       this.$router.push("/");
@@ -52,7 +78,6 @@ export default {
   display: flex;
 }
 :root {
-  --blue: #6495ed;
   --white: #faf0e6;
   --beige: #f0e9d2;
   --kakee: E6DDC4;
@@ -70,21 +95,73 @@ export default {
   display: flex;
   align-items: center;
 }
-
-.fa-bars {
-  font-size: 1.5em;
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
 }
+
+/* .fa-bars {
+  font-size: 1.5em;
+  color: var(--beige);
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: none;
+  position: relative;
+  z-index: 100;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  margin-top: 15px;
+} */
 .bodie {
   padding-right: 50px;
   padding-left: 50px;
 }
+
+.menu {
+  background-color: var(--krom);
+  display: block;
+  color: var(--beige);
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 0;
+  border-radius: 10px;
+  padding-top: 50px;
+  bottom: 0;
+  z-index: 1000;
+  overflow-x: hidden;
+  transition: width 0.5s;
+}
+
+.menu--open {
+  width: 100%;
+}
+.menu--bar {
+  text-decoration: none;
+  line-height: 1.6em;
+  font-size: 1em;
+  padding: 0.5em;
+  display: block;
+  color: var(--beige);
+
+  display: flex;
+  justify-content: center;
+}
+
+.bar {
+  background-color: var(--beige);
+}
+
 .bt {
   display: flex;
   flex-grow: 1;
   padding: 0 50px;
 }
 .hamburger {
-  background-color: var(--krom);
+  background-color: var(--kam);
   position: fixed;
   top: 0;
   bottom: 0;
