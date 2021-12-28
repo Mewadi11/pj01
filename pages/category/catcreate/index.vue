@@ -3,21 +3,49 @@
     <div class="box">
       <div class="form-group kan" role="group">
         <div class="m-5">
-          <label for="input-live">Name:</label>
+          <label for="input-live">Name</label>
           <input type="text" class="form-control" v-model="name" />
 
-          <label for="input-live">Lastname:</label>
-          <input type="text" class="form-control" v-model="lastname" />
-        </div>
-      </div>
+          <form class="row g-3">
+            <label for="todo" class="visually-hidden">todo</label>
 
-      <div class="center_box mt-5">
-        <div>
-          <b-button href="#" variant="primary" @click="back">กลับ</b-button>
+            <div class="col-auto">
+              <select class="form-select" aria-label="Default select example">
+                <option selected>เลือกหมวดหมู่</option>
+                <option value="1">หมวดหมู่1</option>
+                <option value="2">หมวดหมู่2</option>
+                <option value="3">หมวดหมู่3</option>
+              </select>
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary mb-3">ลบ</button>
+            </div>
+          </form>
+          <form class="row g-3">
+            <button type="submit" class="btn btn-primary mb-3">เพิ่ม</button>
+
+            <div class="col-auto">
+              <select class="form-select" aria-label="Default select example">
+                <option selected>เลือกหมวดหมู่</option>
+                <option value="1">หมวดหมู่1</option>
+                <option value="2">หมวดหมู่2</option>
+                <option value="3">หมวดหมู่3</option>
+              </select>
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary mb-3">ลบ</button>
+            </div>
+          </form>
         </div>
-        <div class="col-md-10"></div>
-        <b-button href="#" variant="primary" @click="save">ยืนยัน</b-button>
       </div>
+    </div>
+
+    <div class="center_box mt-5">
+      <div>
+        <b-button href="#" variant="primary" @click="back">กลับ</b-button>
+      </div>
+      <div class="col-md-10"></div>
+      <b-button href="#" variant="primary" @click="save">ยืนยัน</b-button>
     </div>
   </div>
 </template>
@@ -72,5 +100,14 @@ export default {
   margin: auto;
   width: 80%;
   margin-top: 100px;
+}
+.form-select {
+  min-height: 40px;
+  border-radius: 5px;
+  width: 500px;
+}
+.row {
+  justify-content: space-between;
+  margin-top: 15px;
 }
 </style>

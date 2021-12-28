@@ -86,6 +86,7 @@ export default {
   display: flex;
   grid-template-columns: 1fr 1fr 1fr;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .category_item {
   /* box-shadow: 0px 3px 12px rgb(0 0 0 / 15%);
@@ -102,13 +103,19 @@ export default {
   margin-top: 20px; */
   height: 12.5rem;
   align-content: 0 0 calc(33% / 3);
+  display: table;
+  justify-content: center;
 }
 
 .category__text {
-  font-size: 14px;
+  font-size: 22px;
   color: #000;
   text-align: center;
   height: 100%;
-  text-justify: inherit;
+
+  justify-content: center;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
 }
 </style>

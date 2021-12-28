@@ -11,9 +11,15 @@
       </div>
       <div class="d-flex justify-content-end">
         <div>
-          <button v-if="page != 1" @click="delPage">-1</button>
-          <label for="">{{ page }}</label>
-          <button @click="addPage">+1</button>
+          <button
+            class="btn btn-outline-info"
+            v-if="page != 1"
+            @click="delPage"
+          >
+            ย้อนกลับ
+          </button>
+          <label for="" href="#"> {{ page }} </label>
+          <button class="btn btn-outline-info" @click="addPage">ถัดไป</button>
         </div>
       </div>
     </div>
