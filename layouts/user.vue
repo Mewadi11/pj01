@@ -1,3 +1,4 @@
+
 <template>
   <div class="index_container">
     <div class="headbar">
@@ -159,6 +160,7 @@ export default {
   display: flex;
   flex-grow: 1;
   padding: 0 50px;
+  overflow-x: auto;
 }
 .hamburger {
   background-color: var(--kam);

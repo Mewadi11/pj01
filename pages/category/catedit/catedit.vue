@@ -1,6 +1,11 @@
 <template>
   <div class="center_from">
     <div class="box">
+      <div class="ma">
+        <b-button href="#" variant="primary" @click="createtodo"
+          >สร้าง todo</b-button
+        >
+      </div>
       <div class="form-group kan" role="group">
         <div class="m-5">
           <label for="input-live">Name</label>

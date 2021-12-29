@@ -7,7 +7,7 @@
         >
       </div>
       <div class="catrgory_grid">
-        <a href="#" class="category_item">
+        <a href="/catedit" class="category_item">
           <div class="category__text">หมวดหมู่1</div>
         </a>
         <a href="#" class="category_item">
@@ -41,12 +41,12 @@
 <script>
 export default {
   layout: "user",
-  data() {
-    return {
-      name: "",
-      lastname: "",
-    };
-  },
+  // data() {
+  //   return {
+  //     name: "",
+  //     lastname: "",
+  //   };
+  // },
   methods: {
     catcreate() {
       this.$router.push("category/catcreate");
