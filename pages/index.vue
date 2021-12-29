@@ -2,7 +2,7 @@
   <div class="center_box">
     <div class="bt">
       <div class="bcbutton">
-        <b-button href="#" variant="primary" @click="todo">todo</b-button>
+        <b-button href="#" variant="primary" @click="todo">TODO</b-button>
       </div>
       <div class="bbutton">
         <b-button href="#" variant="primary" @click="category"
