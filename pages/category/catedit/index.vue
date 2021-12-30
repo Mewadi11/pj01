@@ -71,6 +71,9 @@ export default {
     back() {
       this.$router.push("/category");
     },
+    categoryat1() {
+      this.$router.push("/category/catedit/");
+    },
   },
 };
 </script>
@@ -116,3 +119,4 @@ export default {
   margin-top: 15px;
 }
 </style>
+

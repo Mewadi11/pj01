@@ -2,12 +2,27 @@
   <div class="center_box">
     <div class="box">
       <div class="ma">
-        <b-button href="#" variant="primary" @click="createtodo"
+        <b-button href="#" variant="primary " @click="createtodo"
           >สร้าง todo</b-button
         >
+        <b-button href="#" variant="danger" @click="edittodo"
+          >แก้ไขtodo</b-button
+        >
       </div>
-      <div class="m-3">
-        <b-table :items="todos" :fields="fields"></b-table>
+      <div v-if="loading">loading</div>
+      <div v-else class="m-2">
+        <b-table :items="todos" :fields="fields">
+          <template #cell(actions)="row">
+            <b-button size="sm" @click="info(row)" class="mr-1">
+              แก้ไข
+            </b-button>
+          </template>
+          <template #cell(actions2)="row">
+            <b-button size="sm" @click="deleteTodo(row)" class="mr-1">
+              ลบ
+            </b-button>
+          </template>
+        </b-table>
       </div>
       <div class="d-flex justify-content-end">
         <div>
@@ -18,8 +33,8 @@
           >
             ย้อนกลับ
           </button>
-          <label for="" href="#"> {{ page }} </label>
-          <button class="btn btn-outline-info" @click="addPage">ถัดไป</button>
+          <!-- <label for="" href="#"> {{ page }} </label>
+          <button class="btn btn-outline-info" @click="addPage">ถัดไป</button> -->
         </div>
       </div>
     </div>
@@ -28,13 +43,20 @@
 
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 export default {
   layout: "user",
   data() {
     return {
-      fields: ["id", "title"],
+      fields: [
+        "name",
+        "lastname",
+        { key: "actions", label: "" },
+        { key: "actions2", label: "" },
+      ],
       todos: [],
       page: 1,
+      loading: false,
     };
   },
   created() {
@@ -44,6 +66,9 @@ export default {
     createtodo() {
       this.$router.push("todo/create/");
     },
+    edittodo() {
+      this.$router.push("todo/edittodo/");
+    },
     addPage() {
       this.page += 1;
     },
@@ -51,12 +76,30 @@ export default {
       this.page -= 1;
     },
     async fetchData() {
+      this.loading = true;
       const res = await axios.get(
-        "http://jsonplaceholder.typicode.com/todos?_start=" +
-          (this.page - 1) * 5 +
-          "&_limit=5"
+        "http://kan.ballx86.com/todo?" + (this.page - 1) * 5 + "&_limit=5"
       );
       this.todos = res.data;
+      this.loading = false;
+    },
+    info(row) {
+      this.$router.push("/todo/edit/" + row.item.id);
+      console.log(row.item.id);
+    },
+    async deleteTodo(row) {
+      const result = await Swal.fire({
+        title: "ลบ?",
+        text: "deleted " + row.item.id,
+        icon: "info",
+        confirmButtonText: "ยืนยัน",
+        denyButtonText: `ยกเลิก`,
+        showDenyButton: true,
+      });
+      if (result.isConfirmed) {
+        await axios.delete("http://kan.ballx86.com/todo/" + row.item.id);
+        this.fetchData();
+      }
     },
   },
   watch: {

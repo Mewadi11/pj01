@@ -1,14 +1,9 @@
 <template>
   <div class="center_from">
-    <div class="load" v-if="loading">
-      <div class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
-    <div v-else class="box">
+    <div class="box">
       <div class="form-group kan" role="group">
         <div class="m-5">
-          <label for="input-live ">name</label>
+          <label for="input-live" :fields="fields">name</label>
           <input type="text m-100" class="form-control" v-model="name" />
 
           <label for="input-live ">lastname</label>
@@ -18,7 +13,9 @@
 
       <div class="center_box mt-5">
         <div>
-          <b-button href="#" variant="primary" @click="back">กลับ</b-button>
+          <b-button href="#" variant="primary" @click="$router.push('/todo')"
+            >กลับ</b-button
+          >
         </div>
         <div class="col-md-10"></div>
         <b-button href="#" variant="primary" @click="save">ยืนยัน</b-button>
@@ -33,22 +30,19 @@ export default {
   layout: "user",
   data() {
     return {
-      name: "",
-      lastname: "",
-      loading: false,
+      fields: ["name", "lastname", { key: "actions", label: "" }],
+      todos: [],
     };
   },
   methods: {
-    back() {
-      this.$router.push("/todo");
+    save() {
+      console.log(this.$route.params.todoId);
     },
-    async save() {
-      this.loading = true;
-      await axios.post("http://kan.ballx86.com/todo", {
-        name: this.name,
-        lastname: this.lastname,
-      });
-      this.$router.push("/todo");
+    async fetchData() {
+      const res = await axios.get(
+        "http://kan.ballx86.com/todo?" + (this.page - 1) * 5 + "&_limit=5"
+      );
+      this.todos = res.data;
     },
   },
 };
@@ -84,11 +78,5 @@ export default {
   margin: auto;
   width: 80%;
   margin-top: 100px;
-}
-.load {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>

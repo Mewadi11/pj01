@@ -8,7 +8,7 @@
       </div>
       <div class="catrgory_grid">
         <a href="/catedit" class="category_item">
-          <div class="category__text">หมวดหมู่1</div>
+          <div class="category__text">หมวดหมู่1 <button>Edit</button></div>
         </a>
         <a href="#" class="category_item">
           <div class="category__text">หมวดหมู่2</div>
@@ -50,6 +50,9 @@ export default {
   methods: {
     catcreate() {
       this.$router.push("category/catcreate");
+    },
+    catedit() {
+      this.$router.push("category/catedit");
     },
   },
 };

@@ -2,7 +2,7 @@
 <template>
   <div class="index_container">
     <div class="headbar">
-      <label for=" "> หน้าแรก </label>
+      <label for="home" @click="home"> หน้าแรก </label>
       <div @click="Isopen = true">
         <i class="fas fa-bars"></i>
 
@@ -32,7 +32,7 @@
       <div class="fooker">
         © footer
 
-        <li class="menu--bar"><a href="#">HOME</a></li>
+        <li class="menu--bar"><a href="./home">HOME </a></li>
         <li class="menu--bar"><a href="#">TODO</a></li>
         <li class="menu--bar"><a href="#">CATEGORY</a></li>
         <li class="menu--bar"><a href="#">thisisthemay@gmail.com</a></li>

@@ -1,11 +1,13 @@
 <template>
   <div class="center_box">
-    <div class="bt">
-      <div class="bcbutton">
-        <b-button href="#" variant="primary" @click="todo">TODO</b-button>
-      </div>
+    <div class="btn">
       <div class="bbutton">
-        <b-button href="#" variant="primary" @click="category"
+        <b-button href="#" variant="outline-primary" @click="todo"
+          >TODO</b-button
+        >
+      </div>
+      <div class="bcbutton">
+        <b-button href="#" variant="outline-primary" @click="category"
           >category</b-button
         >
       </div>
@@ -20,8 +22,8 @@ export default {
     todo() {
       this.$router.push("/todo");
     },
-    createcategory() {
-      this.$router.push("todo/create");
+    category() {
+      this.$router.push("/category");
     },
   },
 };
@@ -34,7 +36,7 @@ export default {
   display: flex;
   overflow-x: 80%;
 }
-.bt {
+.btn {
   display: flex;
   padding: 80%;
   justify-content: space-evenly;
@@ -42,20 +44,27 @@ export default {
 }
 
 .bcbutton a {
-  padding: 50px 50px;
+  display: flex;
+  padding: 50px 60px;
+  justify-content: space-evenly;
 }
 @media all and (min-width: 1024px) {
   .bcbutton a {
-    margin-bottom: 10px;
+    display: flex;
+    margin-bottom: 20px;
   }
+}
+
+.bbutton a {
+  padding: 50px 50px;
+  display: flex;
+
+  justify-content: space-evenly;
 }
 
 @media all and (min-width: 1024px) {
   .bbutton a {
     margin-bottom: 10px;
   }
-}
-.bbutton a {
-  padding: 50px 50px;
 }
 </style>
