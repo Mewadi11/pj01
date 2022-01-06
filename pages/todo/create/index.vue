@@ -44,7 +44,7 @@ export default {
     },
     async save() {
       this.loading = true;
-      await axios.post("http://kan.ballx86.com/todo", {
+      await axios.post("http://192.168.27.105:3000/todo", {
         name: this.name,
         lastname: this.lastname,
       });

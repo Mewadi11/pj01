@@ -84,6 +84,7 @@ export default {
     info(row) {
       this.$router.push("/todo/edit/" + row.item.id);
       console.log(row.item.id);
+      this.fetchData();
     },
     async deleteTodo(row) {
       const result = await Swal.fire({
