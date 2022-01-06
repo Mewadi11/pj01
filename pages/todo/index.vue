@@ -77,9 +77,7 @@ export default {
     },
     async fetchData() {
       this.loading = true;
-      const res = await axios.get(
-        "http://kan.ballx86.com/todo?" + (this.page - 1) * 5 + "&_limit=5"
-      );
+      const res = await axios.get("http://192.168.27.105:3000/todo/");
       this.todos = res.data;
       this.loading = false;
     },
@@ -97,7 +95,7 @@ export default {
         showDenyButton: true,
       });
       if (result.isConfirmed) {
-        await axios.delete("http://kan.ballx86.com/todo/" + row.item.id);
+        await axios.delete("http://192.168.27.105:3000/todo/" + row.item.id);
         this.fetchData();
       }
     },
