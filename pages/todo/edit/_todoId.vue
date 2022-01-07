@@ -35,19 +35,21 @@ export default {
     };
   },
   methods: {
-    save() {
+    async save() {
       console.log(this.$route.params.todoId);
+      await axios.post("http://192.168.27.105:3000/todo/" + row.item.id);
     },
     async fetchData() {
       const res = await axios.get("http://192.168.27.105:3000/todo");
-      this.todos = res.data.headers;
+      this.todos = res.data;
+      this.$router.push("/todo");
 
       if (result.isConfirmed) {
-        await axios.put("http://192.168.27.105:3000/todo/" + row.item.id);
         this.fetchData();
-        this.todos = res.data.headers;
+        this.todos = res.data;
+
+        return "form-control";
       }
-      this.$router.push("/todo");
     },
   },
 };
